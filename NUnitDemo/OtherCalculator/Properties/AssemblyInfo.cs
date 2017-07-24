@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("ConsoleNUnite")]
+[assembly: AssemblyTitle("OtherCalculator")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ConsoleNUnite")]
+[assembly: AssemblyProduct("OtherCalculator")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("32039b8f-bd9a-427d-9ad1-82a1eee30585")]
+[assembly: Guid("ca77a5d3-75ed-48bf-b3d7-5220339744ab")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -34,9 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-
-#region 只对测试的程序开放internal的访问级别
-//对测试程序可见
-[assembly: InternalsVisibleTo("NUnit.TestCalculatorManagement")]
-#endregion

@@ -11,6 +11,15 @@ namespace CalculatorManagement
     /// </summary>
     public class Calculator
     {
+        public Calculator()
+        {
+
+        }
+        internal Calculator(int? i)
+        {
+
+        }
+
         /// <summary>
         /// 加法运算
         /// </summary>

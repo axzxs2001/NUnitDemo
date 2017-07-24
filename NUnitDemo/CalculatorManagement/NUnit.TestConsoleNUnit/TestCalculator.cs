@@ -88,7 +88,7 @@ namespace NUnit.TestCalculatorManagement
         [Test]
         public void TestDivide()
         {
-            var calculator = new Calculator();
+            var calculator = new Calculator(10);
             Assert.AreEqual(4, calculator.Divide(120, 5, 6));
         }
 
