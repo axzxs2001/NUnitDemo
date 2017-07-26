@@ -27,7 +27,11 @@ namespace MyWebProject
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Add framework services.
+            //取数据库连接字符串
+            services.AddOptions();
+            services.Configure<ConnectionString>(Configuration.GetSection("ConnectionStrings"));
+            services.Configure<AppSetting>(Configuration.GetSection("AppSettings"));
+
             services.AddMvc();
         }
 
