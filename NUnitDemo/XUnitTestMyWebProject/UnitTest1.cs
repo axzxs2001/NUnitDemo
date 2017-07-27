@@ -3,6 +3,7 @@ using Xunit;
 
 namespace XUnitTestMyWebProject
 {
+    [Trait("√˚≥∆", "∆’Õ®≤‚ ‘")]
     public class UnitTest1
     {
         [Theory]
