@@ -10,13 +10,31 @@ namespace XUnitTestMyWebProject
     public class UnitTest2
     {
         [Fact]
-        public void TestDemo1()
+        public void IsLength_FooString_ReturnTrue()
         {
             var mock = new Mock<IFoo>();
-            var result = mock.Setup(foo => foo.DoSomething("ping")).Returns(true);
+            mock.Setup(foo => foo.DoSomething("ping")).Returns(true);
 
-            Assert.True(mock.Object.DoSomething("ping"));
+            Assert.True(IsLength(mock.Object, "ping"));
 
+        }
+        [Fact]
+        public void IsLength_FooIsNull_Throw()
+        {
+            var exception = Assert.Throws<Exception>(() => IsLength(null, null));
+            Assert.Contains(exception.Message, "foo为空");
+
+        }
+        public bool IsLength(IFoo foo, string someString)
+        {
+            if (foo == null)
+            {
+                throw new Exception("foo为空");
+            }
+            else
+            {
+                return foo.DoSomething(someString);
+            }
         }
     }
 
