@@ -10,7 +10,7 @@ namespace XUnitTestMyWebProject
     [Trait("名称", "模拟对象")]
     public class MockObjectTest
     {
-        [Fact]
+        [Fact]                                                      
         public void Anlyze_ShowFileName_CallWebservice()
         {
             //模拟对象

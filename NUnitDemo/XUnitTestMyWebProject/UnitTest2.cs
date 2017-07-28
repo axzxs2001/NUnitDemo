@@ -6,7 +6,7 @@ using Moq;
 
 namespace XUnitTestMyWebProject
 {
-    [Trait("名称", "隔离框架")]
+    [Trait("名称", "普通测试")]
     public class UnitTest2
     {
         [Fact]
