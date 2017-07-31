@@ -6,26 +6,26 @@ using System.Threading.Tasks;
 
 namespace MyWebProject.Model.DbContext
 {
-    public class Register : IRegister
+    public class DrugHandle : IDrugHandle
     {
-        public bool InsertRegister(ReturnRegister returnResister)
+        public bool InsertRegister(Drug returnResister)
         {
             return true;
         }
 
-        public bool UpdateRegister(ReturnRegister returnResister)
+        public bool UpdateRegister(Drug returnResister)
         {
             return true;
         }
 
-        public bool DeleteRegister(ReturnRegister returnResister)
+        public bool DeleteRegister(Drug returnResister)
         {
             return true;
         }
 
-        public List<ReturnRegister> SelectRegisters()
+        public List<Drug> SelectRegisters()
         {
-            return new List<ReturnRegister>();
+            return new List<Drug>();
         }
     }
 }
