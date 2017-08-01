@@ -4,9 +4,10 @@ using System.Text;
 using Xunit;
 using Moq;
 
-namespace MyWebProjectTest
+namespace MyWebProject.UnitTests
 {
-    [Trait("名称", "普通测试")]
+  
+    [Trait("练习", "普通测试")]
     public class UnitTest2
     {
         [Fact]

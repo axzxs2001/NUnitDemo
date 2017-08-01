@@ -27,6 +27,7 @@ namespace MyWebProject.Model
                 var cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.Parameters.AddRange(parmeters);
+                con.Open();
                 var reader = cmd.ExecuteReader();
                 //var table = new DataTable();
                 return null;
@@ -39,6 +40,7 @@ namespace MyWebProject.Model
             {
                 var cmd = new SqlCommand();
                 cmd.Connection = con;
+                con.Open();                
                 cmd.Parameters.AddRange(parmeters);
                 return cmd.ExecuteScalar();
             }
@@ -51,6 +53,7 @@ namespace MyWebProject.Model
                 var cmd = new SqlCommand();
                 cmd.Connection = con;
                 cmd.Parameters.AddRange(parmeters);
+                con.Open();
                 var result = cmd.ExecuteNonQuery();
                 return result > 0;
             }

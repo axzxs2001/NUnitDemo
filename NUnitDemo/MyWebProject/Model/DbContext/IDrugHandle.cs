@@ -12,8 +12,10 @@ namespace MyWebProject.Model.DbContext
 
         bool UpdateDrug(Drug drug);
 
-        bool DeleteDrug(Drug drug);
+        bool DeleteDrug(string no);
 
         List<Drug> SelectDrugs();
+
+        Drug SelectDrug(string no);
     }
 }

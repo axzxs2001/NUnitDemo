@@ -4,12 +4,13 @@ using System.Text;
 using Xunit;
 using Moq;
 
-namespace MyWebProjectTest
+namespace MyWebProject.UnitTests
 {
     /// <summary>
     /// 隔离模拟
     /// </summary>
-    [Trait("名称", "隔离模拟")]
+
+    [Trait("练习", "隔离模拟")]
     public class BufferingTest
     {
         /// <summary>

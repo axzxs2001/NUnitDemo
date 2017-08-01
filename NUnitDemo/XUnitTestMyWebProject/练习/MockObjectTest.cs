@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-namespace MyWebProjectTest
+namespace MyWebProject.UnitTests
 {
     /// <summary>
     /// 模拟对象使用
     /// </summary>
-    [Trait("名称", "模拟对象")]
+    [Trait("练习", "模拟对象")]
     public class MockObjectTest
     {
         [Fact]                                                      

@@ -1,9 +1,9 @@
 using System;
 using Xunit;
 
-namespace MyWebProjectTest
+namespace MyWebProject.UnitTests
 {
-    [Trait("√˚≥∆", "∆’Õ®≤‚ ‘")]
+    [Trait("¡∑œ∞", "∆’Õ®≤‚ ‘")]
     public class UnitTest1
     {
         [Theory]

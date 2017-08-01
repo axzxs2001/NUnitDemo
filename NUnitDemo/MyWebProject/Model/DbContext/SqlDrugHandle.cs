@@ -46,16 +46,26 @@ namespace MyWebProject.Model.DbContext
             return _dataHandle.SavaChange(sql, noParmeter, nameParmeter, quantityParmeter, priceParmeter, placeoriginParmeter, memoParmeter);
         }
 
-        public bool DeleteDrug(Drug drug)
+        public bool DeleteDrug(string no)
         {
             var sql = "delete drugs where no=@no";
-            var noParmeter = new SqlParameter { ParameterName = "@no", Value = drug.No };
+            var noParmeter = new SqlParameter { ParameterName = "@no", Value = no };
             return _dataHandle.SavaChange(sql, noParmeter);
         }
-
+        public Drug SelectDrug(string no)
+        {
+            var sql = "select * from drugs where no=@no";
+            var noParmeter = new SqlParameter { ParameterName = "@no", Value = no };
+            var table = _dataHandle.SelectTable(sql, noParmeter);
+            if (table == null)
+            {
+                return null;
+            }
+            return new Drug { No = "" };
+        }
         public List<Drug> SelectDrugs()
         {
-           
+
             return new List<Drug>();
         }
     }
