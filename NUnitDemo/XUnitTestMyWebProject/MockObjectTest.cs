@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-namespace XUnitTestMyWebProject
+namespace MyWebProjectTest
 {
     /// <summary>
     /// 模拟对象使用

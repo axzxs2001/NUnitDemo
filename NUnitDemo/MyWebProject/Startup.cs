@@ -7,6 +7,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using AutoMapper;
+using DataModel = MyWebProject.Model.DbContext.DataModel;
+using MyWebProject.Model.ViewModel;
 
 namespace MyWebProject
 {
@@ -20,6 +23,12 @@ namespace MyWebProject
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
+
+
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<DataModel.Drug, Drug>();     
+            });
         }
 
         public IConfigurationRoot Configuration { get; }

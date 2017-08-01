@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using Xunit;
-namespace XUnitTestMyWebProject
+namespace MyWebProjectTest
 {
     [Trait("名称", "存根")]
     public class StubTest

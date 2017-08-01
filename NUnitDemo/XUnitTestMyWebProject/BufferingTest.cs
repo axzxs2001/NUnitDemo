@@ -4,7 +4,7 @@ using System.Text;
 using Xunit;
 using Moq;
 
-namespace XUnitTestMyWebProject
+namespace MyWebProjectTest
 {
     /// <summary>
     /// 隔离模拟

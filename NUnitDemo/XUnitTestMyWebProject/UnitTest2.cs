@@ -4,7 +4,7 @@ using System.Text;
 using Xunit;
 using Moq;
 
-namespace XUnitTestMyWebProject
+namespace MyWebProjectTest
 {
     [Trait("名称", "普通测试")]
     public class UnitTest2

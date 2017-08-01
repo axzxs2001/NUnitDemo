@@ -8,12 +8,9 @@ namespace MyWebProject
     public class ConnectionString
     {
         /// <summary>
-        /// his连接字符串
+        /// ConnectString连接字符串
         /// </summary>
-        public string HISConnectionString { get;set;}
-        /// <summary>
-        /// LIS连接字符串
-        /// </summary>
-        public string LISConnectionString { get; set; }
+        public string DefaultConnectionString { get;set;}
+
     }
 }

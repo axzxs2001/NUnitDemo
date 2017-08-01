@@ -8,12 +8,12 @@ namespace MyWebProject.Model.DbContext
 {
     public interface IDrugHandle
     {
-        bool InsertRegister(Drug returnResister);
+        bool InsertDrug(Drug drug);
 
-        bool UpdateRegister(Drug returnResister);
+        bool UpdateDrug(Drug drug);
 
-        bool DeleteRegister(Drug returnResister);
+        bool DeleteDrug(Drug drug);
 
-        List<Drug> SelectRegisters();
+        List<Drug> SelectDrugs();
     }
 }

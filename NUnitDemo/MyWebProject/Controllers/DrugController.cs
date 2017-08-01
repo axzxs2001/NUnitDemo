@@ -6,21 +6,30 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MyWebProject.Controllers
 {
-    public class RegisterController : Controller
+    public class DrugController : Controller
     {
-        public IActionResult AddRegister()
+        [HttpGet("drugs")]
+        public IActionResult Drugs()
         {
+            ViewData["Message"] = "Your contact page.";
+
             return View();
         }
 
-        public IActionResult ModifyRegister()
+        [HttpPost("adddrug")]
+        public IActionResult AddDrug()
+        {
+            return View();
+        }
+        [HttpPut("modifydrug")]
+        public IActionResult ModifyDrug()
         {
             ViewData["Message"] = "Your application description page.";
 
             return View();
         }
-
-        public IActionResult RemoveResister()
+        [HttpDelete("deletedrug")]
+        public IActionResult RemoveDrug()
         {
             ViewData["Message"] = "Your contact page.";
 

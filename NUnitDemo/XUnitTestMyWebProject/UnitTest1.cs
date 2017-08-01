@@ -1,7 +1,7 @@
 using System;
 using Xunit;
 
-namespace XUnitTestMyWebProject
+namespace MyWebProjectTest
 {
     [Trait("√˚≥∆", "∆’Õ®≤‚ ‘")]
     public class UnitTest1

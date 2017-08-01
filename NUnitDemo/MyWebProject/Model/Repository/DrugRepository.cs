@@ -1,29 +1,46 @@
-﻿using MyWebProject.Model.ViewModel;
+﻿using AutoMapper;
+using MyWebProject.Model.DbContext;
+using MyWebProject.Model.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using DataModel = MyWebProject.Model.DbContext.DataModel;
 namespace MyWebProject.Model.IRepository
 {
+    /// <summary>
+    /// drug仓储类
+    /// </summary>
     public class DrugRepository : IDrugRepository
     {
-        public bool AddDrug(Drug returnRegister)
+        IDrugHandle _drugHandle;
+        public DrugRepository(IDrugHandle drugHandle)
         {
-            return true;
+            _drugHandle = drugHandle;
+      
         }
-        public bool ModifyDrug(Drug returnRegister)
+        public bool AddDrug(Drug drug)
         {
-            return true;
+            var dataDrug = Mapper.Map<DataModel.Drug>(drug);
+            return _drugHandle.InsertDrug(dataDrug);
         }
-        public bool RemoveDrug(Drug returnRegister)
+        public bool ModifyDrug(Drug drug)
         {
-            return true;
-        }      
+            var dataDrug = Mapper.Map<DataModel.Drug>(drug);
+            return _drugHandle.UpdateDrug(dataDrug);
+        }
+        public bool RemoveDrug(Drug drug)
+        {
+            var dataDrug = Mapper.Map<DataModel.Drug>(drug);
+            return _drugHandle.DeleteDrug(dataDrug);
+        }
 
         public List<Drug> GetDrugs(string code)
         {
-            throw new NotImplementedException();
+            var drugList = _drugHandle.SelectDrugs();
+            var drugs =new List<Drug>();
+            Mapper.Map(drugList, drugs);
+            return drugs;
         }
     }
 }
