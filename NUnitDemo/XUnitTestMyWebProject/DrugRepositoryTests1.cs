@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Xunit;
-using Moq;
 using MyWebProject.Model.IRepository;
 using MyWebProject.Model.DbContext;
 using MyWebProject.Model.DbContext.DataModel;
@@ -30,13 +29,19 @@ namespace MyWebProject.UnitTests
         }
 
         #region AddDrug测试
+        /// <summary>
+        /// 添加drug空参数
+        /// </summary>
         [Fact]
         public void AddDrug_NullParameter_ThrowException()
         {
             var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(null));
             Assert.Contains("drug为空", exc.Message);
         }
-
+        /// <summary>
+        /// 添加drug名称为null或""的
+        /// </summary>
+        /// <param name="name"></param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -45,6 +50,9 @@ namespace MyWebProject.UnitTests
             var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(new Model.ViewModel.Drug { No = "test001", Name = name }));
             Assert.Contains("drug属性name不能为空", exc.Message);
         }
+        /// <summary>
+        /// 添加drug数量小于0的
+        /// </summary>
         [Fact]
         public void AddDrug_QuantityLessZero_ThrowException()
         {
@@ -54,6 +62,10 @@ namespace MyWebProject.UnitTests
         #endregion
 
         #region ModifyDrug测试
+        /// <summary>
+        /// 修改drug 
+        /// </summary>
+        /// <param name="no"></param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -63,7 +75,10 @@ namespace MyWebProject.UnitTests
             Assert.Contains("drug属性no不能为空", exc.Message);
         }
 
-
+        /// <summary>
+        /// 修改drug不存在要修的药
+        /// </summary>
+        /// <param name="no"></param>
         [Theory]
         [InlineData("test0001")]
         public void ModifyDrug_NoNotExist_ThrowException(string no)
@@ -74,6 +89,10 @@ namespace MyWebProject.UnitTests
         #endregion
 
         #region RemoveDrug测试
+        /// <summary>
+        /// 删除drug编号不存在
+        /// </summary>
+        /// <param name="no"></param>
         [Theory]
         [InlineData(null)]
         [InlineData("")]
@@ -85,6 +104,9 @@ namespace MyWebProject.UnitTests
         #endregion
 
         #region GetDrugs测试
+        /// <summary>
+        /// 验证返回记录为0的
+        /// </summary>
         [Fact]
         public void GetDrugs_ValidateResult_ReturnNoList()
         {

@@ -86,6 +86,9 @@ namespace MyWebProject.UnitTests
         #endregion
 
         #region GetDrugs测试
+        /// <summary>
+        /// 验证返回结果为0的
+        /// </summary>
         [Fact]       
         public void GetDrugs_ValidateResult_ReturnNoList()
         {
@@ -93,6 +96,9 @@ namespace MyWebProject.UnitTests
             var durgs = _drugRepostiory.GetDrugs();
             Assert.Equal(0, durgs.Count);
         }
+        /// <summary>
+        /// 验证查询返回为null的
+        /// </summary>
         [Fact]
         public void GetDrugs_ValidateResult_ReturnNull()
         {
