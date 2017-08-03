@@ -32,7 +32,7 @@ namespace MyWebProject.UnitTests
         #region AddDrug测试
         [Fact]
         public void AddDrug_NullParameter_ThrowException()
-        {
+        {         
             var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(null));
             Assert.Contains("drug为空", exc.Message);
         }
