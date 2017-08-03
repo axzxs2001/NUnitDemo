@@ -23,16 +23,16 @@ namespace MyWebProject.Controllers
         }
 
         [HttpGet("getdrugs")]
-        public IActionResult GetDrugs()
+        public JsonResult GetDrugs()
         {
             try
             {
                 var list = _drugRepository.GetDrugs();
-                return new JsonResult(new { result = 1, message = $"添加drgu成功！", data = list });
+                return new JsonResult(new { result = 1, message = $"获取drug成功！", data = list });
             }
             catch (Exception exc)
             {
-                return new JsonResult(new { result = 0, message = $"添加drgu错误：{exc.Message}" });
+                return new JsonResult(new { result = 0, message = $"获取drug错误：{exc.Message}" });
             }
         }
 
@@ -42,37 +42,37 @@ namespace MyWebProject.Controllers
             try
             {
                 _drugRepository.AddDrug(drug);
-                return new JsonResult(new { result = 1, message = $"添加drgu成功！" });
+                return new JsonResult(new { result = 1, message = $"添加drug成功！" });
             }
             catch (Exception exc)
             {
-                return new JsonResult(new { result = 0, message = $"添加drgu错误：{exc.Message}" });
+                return new JsonResult(new { result = 0, message = $"添加drug错误：{exc.Message}" });
             }
         }
         [HttpPut("modifydrug")]
-        public IActionResult ModifyDrug(Drug drug)
+        public JsonResult ModifyDrug(Drug drug)
         {
             try
             {
                 _drugRepository.ModifyDrug(drug);
-                return new JsonResult(new { result = 1, message = $"修改drgu成功！" });
+                return new JsonResult(new { result = 1, message = $"修改drug成功！" });
             }
             catch (Exception exc)
             {
-                return new JsonResult(new { result = 0, message = $"修改drgu错误：{exc.Message}" });
+                return new JsonResult(new { result = 0, message = $"修改drug错误：{exc.Message}" });
             }
         }
         [HttpDelete("deletedrug")]
-        public IActionResult RemoveDrug(string no)
+        public JsonResult RemoveDrug(string no)
         {
             try
             {
                 _drugRepository.RemoveDrug(no);
-                return new JsonResult(new { result = 1, message = $"删除drgu成功！" });
+                return new JsonResult(new { result = 1, message = $"删除drug成功！" });
             }
             catch (Exception exc)
             {
-                return new JsonResult(new { result = 0, message = $"删除drgu错误：{exc.Message}" });
+                return new JsonResult(new { result = 0, message = $"删除drug错误：{exc.Message}" });
             }
         }
 
