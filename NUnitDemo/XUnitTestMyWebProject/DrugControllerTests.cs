@@ -5,6 +5,8 @@ using Moq;
 using Xunit;
 using MyWebProject.Controllers;
 using MyWebProject.Model.IRepository;
+using Microsoft.AspNetCore.Mvc;
+using MyWebProject.Model.ViewModel;
 
 namespace MyWebProject.UnitTests
 {
@@ -40,11 +42,29 @@ namespace MyWebProject.UnitTests
             Assert.Contains("RemoveDrug异常", jsonResult.Value.ToString());
         }
         [Fact]
-        public void GetDrugs_ThrowException_ReturJson()
+        public void Drugs_ThrowException_ReturnJson()
         {
             _mockDrugRepository.Setup(drugRepository => drugRepository.GetDrugs()).Throws(new Exception("GetDrugs异常"));
-            var jsonResult = _drugController.GetDrugs();
-            Assert.Contains("GetDrugs异常", jsonResult.Value.ToString());
+            // Act
+            var result = _drugController.Drugs();
+
+            // Assert
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<IList<Drug>>(
+                viewResult.ViewData.Model);
+            Assert.Equal(0, model.Count);
+        }
+
+        [Fact]
+        public void Drugs_Default_ReturnList()
+        {
+            _mockDrugRepository.Setup(drugRepository => drugRepository.GetDrugs()).Returns(new List<Drug>() { new Drug (),new Drug() });
+        
+            var result = _drugController.Drugs();
+            var viewResult = Assert.IsType<ViewResult>(result);
+            var model = Assert.IsAssignableFrom<IList<Drug>>(
+                viewResult.ViewData.Model);
+            Assert.Equal(2, model.Count); 
         }
     }
 }

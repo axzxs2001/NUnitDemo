@@ -18,23 +18,18 @@ namespace MyWebProject.Controllers
 
         [HttpGet("drugs")]
         public IActionResult Drugs()
-        {
-            return View();
-        }
-
-        [HttpGet("getdrugs")]
-        public JsonResult GetDrugs()
-        {
+        {           
             try
             {
                 var list = _drugRepository.GetDrugs();
-                return new JsonResult(new { result = 1, message = $"获取drug成功！", data = list });
+                return View(list);
             }
-            catch (Exception exc)
+            catch
             {
-                return new JsonResult(new { result = 0, message = $"获取drug错误：{exc.Message}" });
+                return View(new List<Drug>());
             }
         }
+
 
         [HttpPost("adddrug")]
         public JsonResult AddDrug(Drug drug)
