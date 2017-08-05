@@ -10,6 +10,9 @@ using Microsoft.Extensions.Logging;
 using AutoMapper;
 using DataModel = MyWebProject.Model.DbContext.DataModel;
 using MyWebProject.Model.ViewModel;
+using MyWebProject.Model.IRepository;
+using MyWebProject.Model;
+using MyWebProject.Model.DbContext;
 
 namespace MyWebProject
 {
@@ -41,6 +44,9 @@ namespace MyWebProject
             services.Configure<ConnectionString>(Configuration.GetSection("ConnectionStrings"));
             services.Configure<AppSetting>(Configuration.GetSection("AppSettings"));
 
+            services.AddTransient<IDataHandle, SqlDataHandle>();
+            services.AddTransient<IDrugHandle, SqlDrugHandle>();
+            services.AddTransient<IDrugRepository, DrugRepository>();
             services.AddMvc();
         }
 

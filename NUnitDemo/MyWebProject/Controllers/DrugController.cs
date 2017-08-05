@@ -29,7 +29,19 @@ namespace MyWebProject.Controllers
                 return View(new List<Drug>());
             }
         }
-
+        [HttpGet("getdrugs")]
+        public IActionResult GetDrugs()
+        {
+            try
+            {
+                var list = _drugRepository.GetDrugs();
+                return new JsonResult(new { result = 1, message = $"获取drugs成功！",data=list });
+            }
+            catch(Exception exc)
+            {
+                return new JsonResult(new { result = 1, message = $"获取drugs失败！{exc.Message}"});
+            }
+        }
 
         [HttpPost("adddrug")]
         public JsonResult AddDrug(Drug drug)
