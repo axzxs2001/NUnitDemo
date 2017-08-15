@@ -3,7 +3,10 @@
   <PropertyGroup>    
     <TargetFramework>netcoreapp2.0</TargetFramework>    
     <AssemblyName>MyWebProject.UnitTests</AssemblyName>    
-    <RootNamespace>MyWebProject.UnitTests</RootNamespace>
+    <RootNamespace>MyWebProject.UnitTests</RootNamespace>    
+    <ApplicationIcon />    
+    <OutputType>Library</OutputType>    
+    <StartupObject />
   </PropertyGroup>
 
   <ItemGroup>
