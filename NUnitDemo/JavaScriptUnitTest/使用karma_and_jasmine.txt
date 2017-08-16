@@ -1,4 +1,6 @@
-﻿1、安装node.js最新版
+﻿karma+jasmine配置步骤
+
+1、安装node.js最新版
 2、打开node command prompt
 3、安装karma：npm install -g karma
 4、初始化karma：karma init（会逐步提示配置选项）
@@ -6,6 +8,23 @@
 5、安装karma-jasmine：npm install -g karma-jasmine
 6、安装karma-coverage：npm install -g karma-coverage
 7、在karma.conf.js同目录下创建src.js和test.js
+	src.js
+	function reverse(name){
+		if(name!='abcd')
+		{
+			return name.split("").reverse().join("");
+		}else{
+		    return name.split("").reverse().join("")+"1";
+		}
+	}
+
+	test.js
+	describe("测试集合", function() {
+		it("reverse测试",function(){
+			expect("DCBA").toEqual(reverse("ABCD"));    
+ 			expect("dcba1").toEqual(reverse("abcd"));  
+		});
+	});
 8、修改karma.conf.js节点
 	files: ['*.js']
 
@@ -17,3 +36,4 @@
 		type : 'html',
 		dir : 'coverage/'
 	}
+9、动行测试：karma start karma.conf.js
