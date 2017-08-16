@@ -1,0 +1,19 @@
+﻿1、安装node.js最新版
+2、打开node command prompt
+3、安装karma：npm install -g karma
+4、初始化karma：karma init（会逐步提示配置选项）
+   会生成karma.conf.js
+5、安装karma-jasmine：npm install -g karma-jasmine
+6、安装karma-coverage：npm install -g karma-coverage
+7、在karma.conf.js同目录下创建src.js和test.js
+8、修改karma.conf.js节点
+	files: ['*.js']
+
+	reporters: ['progress','coverage']
+
+	preprocessors : {'src.js': 'coverage'}
+
+	coverageReporter: {
+		type : 'html',
+		dir : 'coverage/'
+	}
