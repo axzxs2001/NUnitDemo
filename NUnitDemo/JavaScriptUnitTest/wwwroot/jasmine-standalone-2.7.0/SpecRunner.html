@@ -40,6 +40,49 @@
                 
             });            
         });
+
+         describe("测试集合，相当于一个类", function () {
+             //定义一个模拟对象
+             var mockObj001;
+             beforeEach(function () {
+                 //初始化模拟对象，并定义模拟测试方法
+                 mockObj001 = {
+                     getCount1: function () {
+                     },
+                     getCount2: function () {
+                     }
+                 };
+                 //定义方法返回值
+                 spyOn(mockObj001, 'getCount1').and.returnValue(111);
+
+
+                 //定义方法返回值
+                 spyOn(mockObj001, "getCount2").and.callFake(function () {
+                     return 111;
+                 });
+
+             });
+             //测试方法1
+             it("测试testFuntion001", function () {
+                 var result = testFuntion001(mockObj001);
+                 expect(112).toBe(result);
+             });
+             //测试方法2
+             it("测试testFuntion002", function () {
+                 var result = testFuntion002(mockObj001);
+                 expect(112).toBe(result);
+             });
+         });
+         //被测试方法1
+         function testFuntion001(obj) {
+             var result = obj.getCount1();
+             return result + 1;
+         }
+         //被测试方法2
+         function testFuntion002(obj) {
+             var result = obj.getCount2();
+             return result + 1;
+         }
     </script>
 </head>
 
