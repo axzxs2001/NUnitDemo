@@ -18,23 +18,52 @@ namespace MyWebProject.UnitTests
         /// mock的药品处理对象
         /// </summary>
         Mock<IDrugHandle> _mockDrugHandle;
-       
+
         /// <summary>
         /// 实始化测试用例
         /// </summary>
         public DrugRepositoryTests()
-        {            
+        {
             //使用Moq隔离框架
             _mockDrugHandle = new Mock<IDrugHandle>();
             _drugRepostiory = new DrugRepository(_mockDrugHandle.Object);
         }
 
         #region AddDrug测试
+
+        [Fact]
+        public void AddDrug_Default_ReturnTrue()
+        {
+            var dataDrug = new Model.DbContext.DataModel.Drug()
+            {
+                Name = "aa",
+                Quantity = 10d,
+                No = "a",
+                Price = 1.2m,
+                Memo = "",
+                PlaceOrigin = ""
+            };
+            _mockDrugHandle.Setup(drugHandle => drugHandle.InsertDrug(dataDrug)).Returns(value: true);
+
+
+            var viewDrug = new Model.ViewModel.Drug()
+            {
+                Name = "aa",
+                Quantity = 10d,
+                No = "a",
+                Price = 1.2m,
+                Memo = "",
+                PlaceOrigin = ""
+            };
+            var result = _drugRepostiory.AddDrug(viewDrug);
+            Assert.True(result);
+        }
+
         [Fact]
         public void AddDrug_NullParameter_ThrowException()
-        {         
+        {
             var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(null));
-            Assert.Contains("drug为空", exc.Message);
+            Assert.Equal("drug为空!", exc.Message);
         }
 
         [Theory]
@@ -45,10 +74,12 @@ namespace MyWebProject.UnitTests
             var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(new Model.ViewModel.Drug { No = "test001", Name = name }));
             Assert.Contains("drug属性name不能为空", exc.Message);
         }
-        [Fact]
-        public void AddDrug_QuantityLessZero_ThrowException()
+        [Theory]
+        [InlineData(0)]
+        [InlineData(double.MinValue)]
+        public void AddDrug_QuantityLessZero_ThrowException(double quantity)
         {
-            var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(new Model.ViewModel.Drug { Name = "测试药", Quantity = -1 }));
+            var exc = Assert.Throws<Exception>(() => _drugRepostiory.AddDrug(new Model.ViewModel.Drug { Name = "测试药", Quantity = quantity }));
             Assert.Contains("drug属性数量不能小于0", exc.Message);
         }
         #endregion
@@ -67,9 +98,9 @@ namespace MyWebProject.UnitTests
         [Theory]
         [InlineData("test0001")]
         public void ModifyDrug_NoNotExist_ThrowException(string no)
-        {          
-            _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrug(no)).Returns(value:null);
-            var exc = Assert.Throws<Exception>(() => _drugRepostiory.ModifyDrug(new Model.ViewModel.Drug { No = no }));   
+        {
+            _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrug(no)).Returns(value: null);
+            var exc = Assert.Throws<Exception>(() => _drugRepostiory.ModifyDrug(new Model.ViewModel.Drug { No = no }));
             Assert.Contains($"no={no}的，drug不存在", exc.Message);
         }
         #endregion
@@ -89,7 +120,7 @@ namespace MyWebProject.UnitTests
         /// <summary>
         /// 验证返回结果为0的
         /// </summary>
-        [Fact]       
+        [Fact]
         public void GetDrugs_ValidateResult_ReturnNoList()
         {
             _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrugs()).Returns(new List<Drug>());
@@ -102,7 +133,7 @@ namespace MyWebProject.UnitTests
         [Fact]
         public void GetDrugs_ValidateResult_ReturnNull()
         {
-            _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrugs()).Returns(value:null);
+            _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrugs()).Returns(value: null);
             var durgs = _drugRepostiory.GetDrugs();
             Assert.Equal(0, durgs.Count);
         }

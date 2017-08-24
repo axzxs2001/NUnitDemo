@@ -43,11 +43,11 @@ namespace MyWebProject.Controllers
             }
         }
 
-        [HttpPost("adddrug")]
+        [HttpGet("adddrug")]
         public JsonResult AddDrug(Drug drug)
         {
             try
-            {
+            {               
                 _drugRepository.AddDrug(drug);
                 return new JsonResult(new { result = 1, message = $"添加drug成功！" });
             }

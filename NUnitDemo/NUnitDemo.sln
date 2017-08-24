@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.3
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CalculatorManagement", "CalculatorManagement", "{0D33C116-ACB6-4E9F-8D7A-2614743CFBCD}"
 EndProject
@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebProject.UnitTests", "X
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MyWebProject.IntegrationTesting", "MyWebProject.IntegrationTesting\MyWebProject.IntegrationTesting.csproj", "{8034E1A0-2298-4A8B-B4F2-2752426DF7FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JavaScriptUnitTest", "JavaScriptUnitTest\JavaScriptUnitTest.csproj", "{9E957205-8888-4BB1-A303-0539A5D50403}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JavaScriptUnitTest", "JavaScriptUnitTest\JavaScriptUnitTest.csproj", "{9E957205-8888-4BB1-A303-0539A5D50403}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitTestProject1", "XUnitTestProject1\XUnitTestProject1.csproj", "{92E55443-A871-4A7B-A41E-4D9BF7D25B77}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,6 +57,10 @@ Global
 		{9E957205-8888-4BB1-A303-0539A5D50403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E957205-8888-4BB1-A303-0539A5D50403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E957205-8888-4BB1-A303-0539A5D50403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92E55443-A871-4A7B-A41E-4D9BF7D25B77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92E55443-A871-4A7B-A41E-4D9BF7D25B77}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92E55443-A871-4A7B-A41E-4D9BF7D25B77}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92E55443-A871-4A7B-A41E-4D9BF7D25B77}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{F8B0156B-7B10-484E-ADE9-D24633BCE9E0} = {B79D193C-921E-41A7-B4A8-2283A3991899}
 		{8034E1A0-2298-4A8B-B4F2-2752426DF7FC} = {B79D193C-921E-41A7-B4A8-2283A3991899}
 		{9E957205-8888-4BB1-A303-0539A5D50403} = {B79D193C-921E-41A7-B4A8-2283A3991899}
+		{92E55443-A871-4A7B-A41E-4D9BF7D25B77} = {B79D193C-921E-41A7-B4A8-2283A3991899}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9BE788D-F96A-4206-9F87-0F2E9CE920A0}
