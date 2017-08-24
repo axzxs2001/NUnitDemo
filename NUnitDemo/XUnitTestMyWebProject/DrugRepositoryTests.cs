@@ -34,26 +34,14 @@ namespace MyWebProject.UnitTests
         [Fact]
         public void AddDrug_Default_ReturnTrue()
         {
-            var dataDrug = new Model.DbContext.DataModel.Drug()
-            {
-                Name = "aa",
-                Quantity = 10d,
-                No = "a",
-                Price = 1.2m,
-                Memo = "",
-                PlaceOrigin = ""
-            };
-            _mockDrugHandle.Setup(drugHandle => drugHandle.InsertDrug(dataDrug)).Returns(value: true);
+        
+            _mockDrugHandle.Setup(drugHandle => drugHandle.InsertDrug(null)).Returns(value: true);
 
 
             var viewDrug = new Model.ViewModel.Drug()
             {
                 Name = "aa",
-                Quantity = 10d,
-                No = "a",
-                Price = 1.2m,
-                Memo = "",
-                PlaceOrigin = ""
+                Quantity = 10d             
             };
             var result = _drugRepostiory.AddDrug(viewDrug);
             Assert.True(result);
