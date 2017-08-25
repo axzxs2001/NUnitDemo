@@ -45,13 +45,11 @@ namespace MyWebProject.Model.IRepository
             {
                 throw new Exception("drug属性数量不能小于0");
             }
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.CreateMap<Drug, DataModel.Drug>();
-            //});
-            //var dataDrug = Mapper.Map<DataModel.Drug>(drug);
-
-            var dataDrug = new DataModel.Drug() { Name = drug.Name, Quantity = drug.Quantity, Memo = drug.Memo, PlaceOrigin = drug.PlaceOrigin, Price = drug.Price };
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Drug, DataModel.Drug>();
+            });
+            var dataDrug = Mapper.Map<DataModel.Drug>(drug);
             return _drugHandle.InsertDrug(dataDrug);
         }
         /// <summary>
@@ -85,6 +83,10 @@ namespace MyWebProject.Model.IRepository
             {
                 throw new Exception("drug属性数量不能小于0");
             }
+            Mapper.Initialize(cfg =>
+            {
+                cfg.CreateMap<Drug, DataModel.Drug>();
+            });
             var dataDrug = Mapper.Map<DataModel.Drug>(drug);
             return _drugHandle.UpdateDrug(dataDrug);
         }
@@ -115,6 +117,10 @@ namespace MyWebProject.Model.IRepository
             }
             else
             {
+                Mapper.Initialize(cfg =>
+                {
+                    cfg.CreateMap<List<DataModel.Drug>, List<Drug>>();
+                });
                 Mapper.Map(drugList, drugs);
                 return drugs;
             }

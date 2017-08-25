@@ -27,17 +27,14 @@ namespace MyWebProject.UnitTests
             //使用Moq隔离框架
             _mockDrugHandle = new Mock<IDrugHandle>();
             _drugRepostiory = new DrugRepository(_mockDrugHandle.Object);
+          
         }
 
         #region AddDrug测试
-
         [Fact]
         public void AddDrug_Default_ReturnTrue()
         {
-        
-            _mockDrugHandle.Setup(drugHandle => drugHandle.InsertDrug(null)).Returns(value: true);
-
-
+            _mockDrugHandle.Setup(drugHandle => drugHandle.InsertDrug(It.IsAny<Drug>())).Returns(value: true);
             var viewDrug = new Model.ViewModel.Drug()
             {
                 Name = "aa",
@@ -113,7 +110,7 @@ namespace MyWebProject.UnitTests
         {
             _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrugs()).Returns(new List<Drug>());
             var durgs = _drugRepostiory.GetDrugs();
-            Assert.Equal(0, durgs.Count);
+            Assert.Empty(durgs);
         }
         /// <summary>
         /// 验证查询返回为null的
@@ -123,7 +120,7 @@ namespace MyWebProject.UnitTests
         {
             _mockDrugHandle.Setup(drugHandle => drugHandle.SelectDrugs()).Returns(value: null);
             var durgs = _drugRepostiory.GetDrugs();
-            Assert.Equal(0, durgs.Count);
+            Assert.Empty(durgs);
         }
         #endregion
     }
