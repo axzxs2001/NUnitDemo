@@ -50,6 +50,7 @@ namespace MyWebProject.Model.IRepository
                 cfg.CreateMap<Drug, DataModel.Drug>();
             });
             var dataDrug = Mapper.Map<DataModel.Drug>(drug);
+      
             return _drugHandle.InsertDrug(dataDrug);
         }
         /// <summary>
